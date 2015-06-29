@@ -90,13 +90,20 @@ public class LevelingFragment extends Fragment {
     }
 
     private void initButtonListener() {
-        // calcButton Listener
+        // CalcButton Listener
         mCalcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mLevelingType == FOUR_LEVELING)
                     calculateFour();
                 calculateGeneral();
+            }
+        });
+        // ResetButton Listener
+        mResetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset();
             }
         });
         // SwitchListener
@@ -123,7 +130,7 @@ public class LevelingFragment extends Fragment {
                 redBack    = getValue(mEditRedBack),
                 redFront   = getValue(mEditRedFront),
                 paramKBack = getValue(mParamKBack),
-                paramKFront= getValue(mParamKBack);
+                paramKFront= getValue(mParamKFront);
         double bfDifferentBlack = blackBack - blackFront,
                 bfDifferentRed  = redBack - redFront;
         showValue(mBfDifferentBlack, bfDifferentBlack);
@@ -132,10 +139,10 @@ public class LevelingFragment extends Fragment {
                 brDifferentFront  = paramKFront + blackFront - redFront;
         showValue(mBrDifferentBack, brDifferentBack);
         showValue(mBrDifferentFront, brDifferentFront);
-        int param100 = paramKBack == 4787 ? 100 : -100;
+        int param100 = paramKBack == 4787 ? -100 : 100;
         double heightDifferent = (bfDifferentBlack + bfDifferentRed + param100) / 2;
         showValue(mHeightDifferent, heightDifferent);
-        double deltaH = bfDifferentBlack + param100 - bfDifferentRed;
+        double deltaH = bfDifferentBlack - param100 - bfDifferentRed;
         showValue(mLevelingDeltaH, deltaH);
         if(Math.abs(deltaH) < 5) {
             mLevelingInfo.setText(getString(R.string.text_success));
@@ -164,6 +171,17 @@ public class LevelingFragment extends Fragment {
             mDistanceInfo.setText(getString(R.string.text_fail));
             mDistanceInfo.setTextColor(getResources().getColor(R.color.fail));
         }
+    }
+
+    private void reset() {
+        mEditBackDown  .setText("");
+        mEditBackUp    .setText("");
+        mEditFrontDown .setText("");
+        mEditFrontUp   .setText("");
+        mEditBlackBack .setText("");
+        mEditRedBack   .setText("");
+        mEditBlackFront.setText("");
+        mEditRedFront  .setText("");
     }
 
     private double getValue(EditText edit) {

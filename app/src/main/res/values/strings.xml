@@ -36,12 +36,12 @@
     <!-- 普通水准测量-->
     <string name="leveling_black">黑面</string>
     <string name="leveling_red">红面</string>
-    <string name="leveling_back_surface">后面</string>
-    <string name="leveling_front_surface">前面</string>
+    <string name="leveling_back_surface">后视</string>
+    <string name="leveling_front_surface">前视</string>
     <string name="leveling_surface_different">后-前</string>
     <string name="leveling_k">K</string>
     <string name="leveling_black_minus_red">K+黑减红</string>
-    <string name="leveling_height_different">高差中数</string>
+    <string name="leveling_height_different">高差中数 </string>
     <string name="leveling_delta_h">ΔH</string>
 
     <string name="action_settings">设置</string>
