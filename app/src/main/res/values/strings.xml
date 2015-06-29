@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">测量助手</string>
+    
+    <string name="title_leveling">水准测量</string>
+    <string name="title_traverse">导线测量水平角观测</string>
+    <string name="title_leveling_four">四等水准测量</string>
+    <string name="title_leveling_general">普通水准测量</string>
+
+    <string name="btn_calc">计算</string>
+    <string name="btn_reset">清除</string>
+
+    <string name="sign_du">°</string>
+    <string name="sign_fen">′</string>
+    <string name="sign_miao">″</string>
+    <string name="param_a">角A</string>
+    <string name="param_b">角B</string>
+
+    <string name="survey_first">上半测回</string>
+    <string name="survey_second">下半测回</string>
+    <string name="survey_result">半测回角值</string>
+    <string name="survey_difference">半测回差</string>
+    <string name="survey_difference_arg">一测回平均角值</string>
+    <string name="text_success">符合标准</string>
+    <string name="text_fail">超限！</string>
+
+    <!-- 四等水准测量-->
+    <string name="leveling_back">后尺 (单位m)</string>
+    <string name="leveling_front">前尺 (单位m)</string>
+    <string name="leveling_general">高差 (单位mm)</string>
+    <string name="leveling_up">上丝</string>
+    <string name="leveling_down">下丝</string>
+    <string name="distance_back">后距</string>
+    <string name="distance_front">前距</string>
+    <string name="distance_different">视距差 d</string>
+
+    <!-- 普通水准测量-->
+    <string name="leveling_black">黑面</string>
+    <string name="leveling_red">红面</string>
+    <string name="leveling_back_surface">后面</string>
+    <string name="leveling_front_surface">前面</string>
+    <string name="leveling_surface_different">后-前</string>
+    <string name="leveling_k">K</string>
+    <string name="leveling_black_minus_red">K+黑减红</string>
+    <string name="leveling_height_different">高差中数</string>
+    <string name="leveling_delta_h">ΔH</string>
+
+    <string name="action_settings">设置</string>
+
+</resources>

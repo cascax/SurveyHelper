@@ -1,0 +1,21 @@
+<resources>
+
+
+    <style name="AppTheme" parent="BaseTheme">
+    </style>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorButtonNormal">@color/primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:windowBackground">@color/primary_background</item>
+    </style>
+
+    <style name="Toolbar" parent="Widget.AppCompat.Light.ActionBar">
+        <item name="colorControlNormal">@color/title_primary</item>
+        <item name="android:textColorPrimary">@color/title_primary</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+</resources>
