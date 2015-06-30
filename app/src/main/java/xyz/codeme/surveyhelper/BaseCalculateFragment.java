@@ -41,7 +41,7 @@ public abstract class BaseCalculateFragment extends Fragment {
     }
 
     /**
-     * ±à¼­¿ò»Ø³µÇĞ»»ÏÂÒ»¸ö
+     * ç¼–è¾‘æ¡†å›è½¦åˆ‡æ¢ä¸‹ä¸€ä¸ª
      */
     private void initEditorActionListener() {
         int size = mEditTextList.size();
@@ -51,7 +51,7 @@ public abstract class BaseCalculateFragment extends Fragment {
     }
 
     /**
-     * Çé¿öÊäÈë¿ò
+     * æƒ…å†µè¾“å…¥æ¡†
      */
     protected void reset() {
         int listSize = mEditTextList.size();
@@ -61,10 +61,10 @@ public abstract class BaseCalculateFragment extends Fragment {
     }
 
     /**
-     * »ñÈ¡±£´æµÄ±ê×¼Öµ
+     * è·å–ä¿å­˜çš„æ ‡å‡†å€¼
      * @param key           preference key
-     * @param defaultValue  Ä¬ÈÏÖµ
-     * @return  ±ê×¼Öµ
+     * @param defaultValue  é»˜è®¤å€¼
+     * @return  æ ‡å‡†å€¼
      */
     protected double getStandard(String key, double defaultValue) {
         return Double.parseDouble(
@@ -80,14 +80,14 @@ public abstract class BaseCalculateFragment extends Fragment {
 
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            // µã»÷ÏÂÒ»Ïîµ½ÏÂÒ»ÏîÊäÈë
+            // ç‚¹å‡»ä¸‹ä¸€é¡¹åˆ°ä¸‹ä¸€é¡¹è¾“å…¥
             if(actionId == EditorInfo.IME_ACTION_NEXT) {
                 if(index + 1 < mEditTextList.size()) {
                     mEditTextList.get(index + 1).requestFocus();
                 }
                 return true;
             }
-            // ×îºóÒ»Ïî»Ø³µ×Ô¶¯¼ÆËã²¢Òş²Ø¼üÅÌ
+            // æœ€åä¸€é¡¹å›è½¦è‡ªåŠ¨è®¡ç®—å¹¶éšè—é”®ç›˜
             if(actionId == EditorInfo.IME_ACTION_DONE) {
                 calculate();
                 InputMethodManager imm = (InputMethodManager) getActivity()

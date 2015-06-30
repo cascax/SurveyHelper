@@ -7,9 +7,11 @@
     <string name="leveling_standard">水准测量ΔH误差标准</string>
     <string name="leveling_standard_summary">单位：mm</string>
     <string name="leveling_standard_default">5</string>
-    <string name="traverse_standard">半测回差误差范围</string>
+    <string name="traverse_horizontal_standard">半测回差水平角误差范围</string>
+    <string name="traverse_horizontal_standard_default">18</string>
     <string name="traverse_standard_summary">单位：秒</string>
-    <string name="traverse_standard_default">18</string>
+    <string name="traverse_vertical_standard">竖盘指标差误差范围</string>
+    <string name="traverse_vertical_standard_default">60</string>
 
     <string name="other_aboutme">关于测量助手</string>
     

@@ -2,7 +2,8 @@
     <string name="app_name">测量助手</string>
     
     <string name="title_leveling">水准测量</string>
-    <string name="title_traverse">导线测量水平角观测</string>
+    <string name="title_traverse_horizontal">导线测量水平角观测</string>
+    <string name="title_traverse_vertical">导线测量竖直角观测</string>
     <string name="title_leveling_four">四等水准测量</string>
     <string name="title_leveling_general">普通水准测量</string>
 
@@ -15,14 +16,15 @@
     <string name="sign_miao">″</string>
     <string name="param_a">角A</string>
     <string name="param_b">角B</string>
+    <string name="text_success">符合标准</string>
+    <string name="text_fail">超限！</string>
 
+    <!-- 导线测量水平角-->
     <string name="survey_first">上半测回</string>
     <string name="survey_second">下半测回</string>
     <string name="survey_result">半测回角值</string>
     <string name="survey_difference">半测回差</string>
     <string name="survey_difference_arg">一测回平均角值</string>
-    <string name="text_success">符合标准</string>
-    <string name="text_fail">超限！</string>
 
     <!-- 四等水准测量-->
     <string name="leveling_back">后尺 (单位mm)</string>
@@ -44,6 +46,12 @@
     <string name="leveling_black_minus_red">K+黑\n减红</string>
     <string name="leveling_height_different">高差中数</string>
     <string name="leveling_delta_h">ΔH</string>
+
+    <!-- 导线测量竖直角-->
+    <string name="survey_vertical_left">竖盘位置左</string>
+    <string name="survey_vertical_right">竖盘位置右</string>
+    <string name="survey_vertical_read">竖盘读数</string>
+    <string name="survey_vertical_different">竖盘指标差</string>
 
     <string name="action_settings">设置</string>
 

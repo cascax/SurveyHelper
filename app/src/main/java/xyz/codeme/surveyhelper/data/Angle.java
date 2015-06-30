@@ -1,6 +1,5 @@
 package xyz.codeme.surveyhelper.data;
 
-
 public class Angle {
     private int du;
     private int fen;
@@ -26,24 +25,30 @@ public class Angle {
         setDuFenMiao(realDu);
     }
 
-    /**
-     * 求两个角度差的绝对值
-     * @param  a 另一个角
-     * @return   差的绝对值
-     */
-    public Angle different(Angle a) {
-        return new Angle(Math.abs(realDu - a.getRealDu()));
+    public Angle(Angle a) {
+        this.du = a.getDu();
+        this.fen = a.getFen();
+        this.miao = a.getMiao();
+        this.realDu = a.getRealDu();
     }
 
     /**
-     * 加上一个角 (改变自身)
+     * 加一个角度 (改变自身)
      * @param a 另一个角
      */
     public Angle add(Angle a) {
-        this.du += a.getDu();
-        this.fen += a.getFen();
-        this.miao += a.getMiao();
-        setRealDu(this.du, this.fen, this.miao);
+        this.realDu += a.getRealDu();
+        setDuFenMiao(this.realDu);
+        return this;
+    }
+
+    /**
+     * 减一个角度 (改变自身)
+     * @param a 另一个角
+     */
+    public Angle subtract(Angle a) {
+        this.realDu -= a.getRealDu();
+        setDuFenMiao(this.realDu);
         return this;
     }
 
@@ -55,6 +60,10 @@ public class Angle {
         this.realDu /= a;
         setDuFenMiao(this.realDu);
         return this;
+    }
+
+    public Angle copy() {
+        return new Angle(this);
     }
 
     @Override

@@ -36,11 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
         mFragmentList = new ArrayList<>();
         mFragmentList.add(new LevelingFragment());
-        mFragmentList.add(new TraverseFragment());
+        mFragmentList.add(new TraverseHorizontalFragment());
+        mFragmentList.add(new TraverseVerticalFragment());
 
         mTitleList = new ArrayList<>();
         mTitleList.add(getString(R.string.title_leveling));
-        mTitleList.add(getString(R.string.title_traverse));
+        mTitleList.add(getString(R.string.title_traverse_horizontal));
+        mTitleList.add(getString(R.string.title_traverse_vertical));
 
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override

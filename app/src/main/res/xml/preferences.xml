@@ -11,10 +11,17 @@
             android:summary="@string/leveling_standard_summary"
             android:selectAllOnFocus="true" />
         <EditTextPreference
-            android:key="traverse_standard"
+            android:key="traverse_horizontal_standard"
             android:inputType="numberDecimal"
-            android:title="@string/traverse_standard"
-            android:defaultValue="@string/traverse_standard_default"
+            android:title="@string/traverse_horizontal_standard"
+            android:defaultValue="@string/traverse_horizontal_standard_default"
+            android:summary="@string/traverse_standard_summary"
+            android:selectAllOnFocus="true" />
+        <EditTextPreference
+            android:key="traverse_vertical_standard"
+            android:inputType="numberDecimal"
+            android:title="@string/traverse_vertical_standard"
+            android:defaultValue="@string/traverse_vertical_standard_default"
             android:summary="@string/traverse_standard_summary"
             android:selectAllOnFocus="true" />
     </PreferenceCategory>
