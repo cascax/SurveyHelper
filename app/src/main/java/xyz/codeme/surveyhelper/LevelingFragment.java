@@ -1,25 +1,27 @@
 package xyz.codeme.surveyhelper;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 
-public class LevelingFragment extends Fragment {
+public class LevelingFragment extends BaseCalculateFragment {
     private static final int GENERAL_LEVELING = 2;
     private static final int FOUR_LEVELING = 1;
     private int mLevelingType = GENERAL_LEVELING;
     private String[] paramK;
+    private double mDeltaHStandard;
 
-    private Switch mLevelingSwitch;
+    private ToggleButton mLevelingSwitch;
     private LinearLayout mLayoutFour;
     private Button mCalcButton;
     private Button mResetButton;
@@ -51,14 +53,21 @@ public class LevelingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         paramK = getResources().getStringArray(R.array.param_k);
+        mDeltaHStandard = getStandard("leveling_standard", 5);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.layout_leveling, container, false);
+        init(v);
+        initButtonListener();
+        return v;
+    }
 
-        mLevelingSwitch = (Switch) v.findViewById(R.id.leveling_switch);
+    @Override
+    protected void initGetView(View v) {
+        mLevelingSwitch = (ToggleButton) v.findViewById(R.id.leveling_switch);
         mLayoutFour  = (LinearLayout) v.findViewById(R.id.layout_leveling_four);
         mCalcButton  = (Button) v.findViewById(R.id.btn_calc);
         mResetButton = (Button) v.findViewById(R.id.btn_reset);
@@ -83,10 +92,18 @@ public class LevelingFragment extends Fragment {
         mHeightDifferent   = (TextView) v.findViewById(R.id.height_different);
         mLevelingDeltaH    = (TextView) v.findViewById(R.id.leveling_delta_h);
         mLevelingInfo      = (TextView) v.findViewById(R.id.leveling_info);
+    }
 
-        initButtonListener();
-
-        return v;
+    @Override
+    protected void initEditTextList() {
+        mEditTextList.add(mEditBackDown);
+        mEditTextList.add(mEditBackUp);
+        mEditTextList.add(mEditFrontDown);
+        mEditTextList.add(mEditFrontUp);
+        mEditTextList.add(mEditBlackBack);
+        mEditTextList.add(mEditRedBack);
+        mEditTextList.add(mEditBlackFront);
+        mEditTextList.add(mEditRedFront);
     }
 
     private void initButtonListener() {
@@ -94,9 +111,7 @@ public class LevelingFragment extends Fragment {
         mCalcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mLevelingType == FOUR_LEVELING)
-                    calculateFour();
-                calculateGeneral();
+                calculate();
             }
         });
         // ResetButton Listener
@@ -106,22 +121,26 @@ public class LevelingFragment extends Fragment {
                 reset();
             }
         });
-        // SwitchListener
-        mLevelingSwitch.setOnClickListener(new View.OnClickListener() {
+        // ToggleButton Listener
+        mLevelingSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                Switch s = (Switch) v;
-                if (s.isChecked()) {
+            public void onCheckedChanged(CompoundButton view, boolean isChecked) {
+                if (isChecked) {
                     mLevelingType = FOUR_LEVELING;
-                    s.setText(R.string.title_leveling_four);
                     mLayoutFour.setVisibility(View.VISIBLE);
                 } else {
                     mLevelingType = GENERAL_LEVELING;
-                    s.setText(R.string.title_leveling_general);
                     mLayoutFour.setVisibility(View.GONE);
                 }
             }
         });
+    }
+
+    @Override
+    protected void calculate() {
+        if (mLevelingType == FOUR_LEVELING)
+            calculateFour();
+        calculateGeneral();
     }
 
     private void calculateGeneral() {
@@ -144,7 +163,7 @@ public class LevelingFragment extends Fragment {
         showValue(mHeightDifferent, heightDifferent);
         double deltaH = bfDifferentBlack - param100 - bfDifferentRed;
         showValue(mLevelingDeltaH, deltaH);
-        if(Math.abs(deltaH) < 5) {
+        if(Math.abs(deltaH) < mDeltaHStandard) {
             mLevelingInfo.setText(getString(R.string.text_success));
             mLevelingInfo.setTextColor(getResources().getColor(R.color.success));
         } else {
@@ -164,24 +183,13 @@ public class LevelingFragment extends Fragment {
         showValue(mDistanceFront, distanceFront);
         double different = distanceBack - distanceFront;
         showValue(mDistanceDifferent, different);
-        if(Math.abs(different) < 3) {
+        if(Math.abs(different) < 3000) {
             mDistanceInfo.setText(getString(R.string.text_success));
             mDistanceInfo.setTextColor(getResources().getColor(R.color.success));
         } else {
             mDistanceInfo.setText(getString(R.string.text_fail));
             mDistanceInfo.setTextColor(getResources().getColor(R.color.fail));
         }
-    }
-
-    private void reset() {
-        mEditBackDown  .setText("");
-        mEditBackUp    .setText("");
-        mEditFrontDown .setText("");
-        mEditFrontUp   .setText("");
-        mEditBlackBack .setText("");
-        mEditRedBack   .setText("");
-        mEditBlackFront.setText("");
-        mEditRedFront  .setText("");
     }
 
     private double getValue(EditText edit) {
@@ -198,7 +206,5 @@ public class LevelingFragment extends Fragment {
     private void showValue(TextView text, double value) {
         text.setText(Double.toString(value));
     }
-
-
 
 }

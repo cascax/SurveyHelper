@@ -8,6 +8,7 @@
 
     <string name="btn_calc">计算</string>
     <string name="btn_reset">清除</string>
+    <string name="btn_ok">确定</string>
 
     <string name="sign_du">°</string>
     <string name="sign_fen">′</string>
@@ -24,8 +25,8 @@
     <string name="text_fail">超限！</string>
 
     <!-- 四等水准测量-->
-    <string name="leveling_back">后尺 (单位m)</string>
-    <string name="leveling_front">前尺 (单位m)</string>
+    <string name="leveling_back">后尺 (单位mm)</string>
+    <string name="leveling_front">前尺 (单位mm)</string>
     <string name="leveling_general">高差 (单位mm)</string>
     <string name="leveling_up">上丝</string>
     <string name="leveling_down">下丝</string>
@@ -38,10 +39,10 @@
     <string name="leveling_red">红面</string>
     <string name="leveling_back_surface">后视</string>
     <string name="leveling_front_surface">前视</string>
-    <string name="leveling_surface_different">后-前</string>
+    <string name="leveling_surface_different">视距　</string>
     <string name="leveling_k">K</string>
-    <string name="leveling_black_minus_red">K+黑减红</string>
-    <string name="leveling_height_different">高差中数 </string>
+    <string name="leveling_black_minus_red">K+黑\n减红</string>
+    <string name="leveling_height_different">高差中数</string>
     <string name="leveling_delta_h">ΔH</string>
 
     <string name="action_settings">设置</string>

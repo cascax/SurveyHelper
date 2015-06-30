@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:focusableInTouchMode="true">
 
     <TextView
         android:layout_width="match_parent"
@@ -33,7 +34,7 @@
             android:gravity="end"
             android:inputType="numberSigned"
             android:ems="10"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -197,7 +198,8 @@
             android:gravity="end"
             android:inputType="number"
             android:ems="10"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:imeOptions="actionNext" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -209,7 +211,8 @@
             android:gravity="end"
             android:inputType="number"
             android:ems="10"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:imeOptions="actionNext" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

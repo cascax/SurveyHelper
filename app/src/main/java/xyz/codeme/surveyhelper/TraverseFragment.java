@@ -1,9 +1,6 @@
 package xyz.codeme.surveyhelper;
 
-
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import xyz.codeme.surveyhelper.data.Angle;
 
 
-public class TraverseFragment extends Fragment {
+public class TraverseFragment extends BaseCalculateFragment {
+    private double mDeviationStandard;
+
     private EditText mAngleA1Du;
     private EditText mAngleA1Fen;
     private EditText mAngleA1Miao;
@@ -36,10 +37,22 @@ public class TraverseFragment extends Fragment {
     private Button   mResetButton;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mDeviationStandard = getStandard("traverse_standard", 18) / 3600;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.layout_traverse, container, false);
+        init(v);
+        initButtonListener();
+        return v;
+    }
 
+    @Override
+    protected void initGetView(View v) {
         mAngleA1Du   = (EditText) v.findViewById(R.id.angle_1a_du);
         mAngleA1Fen  = (EditText) v.findViewById(R.id.angle_1a_fen);
         mAngleA1Miao = (EditText) v.findViewById(R.id.angle_1a_miao);
@@ -59,21 +72,46 @@ public class TraverseFragment extends Fragment {
         mResultInfo      = (TextView) v.findViewById(R.id.result_info);
         mResultDifferent = (TextView) v.findViewById(R.id.result_different);
         mResultArg       = (TextView) v.findViewById(R.id.result_arg);
+    }
 
+    @Override
+    protected void initEditTextList() {
+        mEditTextList.add(mAngleA1Du);
+        mEditTextList.add(mAngleA1Fen);
+        mEditTextList.add(mAngleA1Miao);
+        mEditTextList.add(mAngleB1Du);
+        mEditTextList.add(mAngleB1Fen);
+        mEditTextList.add(mAngleB1Miao);
+        mEditTextList.add(mAngleA2Du);
+        mEditTextList.add(mAngleA2Fen);
+        mEditTextList.add(mAngleA2Miao);
+        mEditTextList.add(mAngleB2Du);
+        mEditTextList.add(mAngleB2Fen);
+        mEditTextList.add(mAngleB2Miao);
+    }
+
+    private void initButtonListener() {
+        // 计算按钮
         mCalcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 calculate();
             }
         });
-
-        return v;
+        // 清空按钮
+        mResetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset();
+            }
+        });
     }
 
     /**
      * 计算水平角观测值
      */
-    public void calculate() {
+    @Override
+    protected void calculate() {
         // 获取上半测回角A、B，计算差
         Angle angleA1 = new Angle(mAngleA1Du.getText().toString(),
                 mAngleA1Fen.getText().toString(),
@@ -97,16 +135,19 @@ public class TraverseFragment extends Fragment {
         // 误差分析，计算一测回平均角值
         Angle different = different1.different(different2);
         mResultDifferent.setText(getString(R.string.survey_difference)
+                + " "
                 + different.toString());
-        if(different.getRealDu() < 18.0/3600) {
+        if(different.getRealDu() < mDeviationStandard) {
             mResultInfo.setText(getString(R.string.text_success));
+            mResultInfo.setTextColor(getResources().getColor(R.color.success));
             mResultArg.setText(getString(R.string.survey_difference_arg)
+                    + " "
                     + different1.add(different2).divide(2).toString());
         } else {
             mResultInfo.setText(getString(R.string.text_fail));
+            mResultInfo.setTextColor(getResources().getColor(R.color.fail));
             mResultArg.setText("");
         }
     }
-
 
 }

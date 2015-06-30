@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/standard_title">
+        <EditTextPreference
+            android:key="leveling_standard"
+            android:inputType="numberDecimal"
+            android:title="@string/leveling_standard"
+            android:defaultValue="@string/leveling_standard_default"
+            android:summary="@string/leveling_standard_summary"
+            android:selectAllOnFocus="true" />
+        <EditTextPreference
+            android:key="traverse_standard"
+            android:inputType="numberDecimal"
+            android:title="@string/traverse_standard"
+            android:defaultValue="@string/traverse_standard_default"
+            android:summary="@string/traverse_standard_summary"
+            android:selectAllOnFocus="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/other_title">
+        <Preference
+            android:key="about_me"
+            android:title="@string/other_aboutme" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -10,17 +10,23 @@
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin">
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:focusableInTouchMode="true">
 
-    <Switch
+    <ToggleButton
         android:id="@+id/leveling_switch"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:shadowColor="@color/primary"
-        android:text="@string/title_leveling_general" />
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:shadowColor="@color/primary_light"
+        android:textColor="@color/title_primary"
+        android:textSize="12sp"
+        android:textOff="@string/title_leveling_general"
+        android:textOn="@string/title_leveling_four"/>
 
     <LinearLayout
         android:id="@+id/layout_leveling_four"
@@ -146,7 +152,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
@@ -170,6 +175,7 @@
         android:id="@+id/layout_leveling_general"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:layout_below="@id/layout_leveling_four"
         android:gravity="center"
         android:stretchColumns="1,2">
@@ -241,7 +247,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:ems="10" />
+                android:ems="10"
+                android:imeOptions="actionNext" />
             <EditText
                 android:id="@+id/edit_red_front"
                 android:layout_width="0dp"
@@ -276,7 +283,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/leveling_height_different" />
+                android:text="@string/leveling_height_different"
+                android:layout_span="2" />
             <TextView
                 android:id="@+id/height_different"
                 android:layout_width="wrap_content"
@@ -287,12 +295,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/leveling_delta_h" />
+                android:text="@string/leveling_delta_h"
+                android:layout_span="2" />
             <TextView
                 android:id="@+id/leveling_delta_h"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="2"/>
+                android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/leveling_info"
                 android:layout_width="wrap_content"
