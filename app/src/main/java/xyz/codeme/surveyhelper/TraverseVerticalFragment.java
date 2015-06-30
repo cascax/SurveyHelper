@@ -97,17 +97,17 @@ public class TraverseVerticalFragment extends BaseCalculateFragment {
         Angle angleLeft = new Angle(mAngleLeftDu.getText().toString(),
                 mAngleLeftFen.getText().toString(),
                 mAngleLeftMiao.getText().toString());
-        Angle differentLeft = new Angle(90).subtract(angleLeft);
-        mAngelResultLeft.setText(differentLeft.toString());
+        Angle resultLeft = new Angle(90).subtract(angleLeft);
+        mAngelResultLeft.setText(resultLeft.toString());
 
         Angle angleRight = new Angle(mAngleRightDu.getText().toString(),
                 mAngleRightFen.getText().toString(),
                 mAngleRightMiao.getText().toString());
-        Angle differentRight = angleRight.copy().subtract(new Angle(270));
-        mAngelResultRight.setText(differentRight.toString());
+        Angle resultRight = angleRight.copy().subtract(new Angle(270));
+        mAngelResultRight.setText(resultRight.toString());
 
         // 误差分析，计算一测回平均角值
-        Angle different = angleRight.copy().subtract(angleLeft).divide(2);
+        Angle different = resultRight.copy().subtract(resultLeft).divide(2);
         mResultDifferent.setText(getString(R.string.survey_vertical_different)
                 + " "
                 + different.toString());
@@ -116,7 +116,7 @@ public class TraverseVerticalFragment extends BaseCalculateFragment {
             mResultInfo.setTextColor(getResources().getColor(R.color.success));
             mResultArg.setText(getString(R.string.survey_difference_arg)
                     + " "
-                    + angleLeft.add(angleRight).divide(2).toString());
+                    + resultLeft.add(resultRight).divide(2).toString());
         } else {
             mResultInfo.setText(getString(R.string.text_fail));
             mResultInfo.setTextColor(getResources().getColor(R.color.fail));
