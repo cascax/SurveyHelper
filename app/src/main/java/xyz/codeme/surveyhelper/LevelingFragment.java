@@ -1,15 +1,17 @@
 package xyz.codeme.surveyhelper;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -23,6 +25,7 @@ public class LevelingFragment extends BaseCalculateFragment {
 
     private ToggleButton mLevelingSwitch;
     private LinearLayout mLayoutFour;
+    private TableLayout mTable;
     private Button mCalcButton;
     private Button mResetButton;
 
@@ -69,6 +72,7 @@ public class LevelingFragment extends BaseCalculateFragment {
     protected void initGetView(View v) {
         mLevelingSwitch = (ToggleButton) v.findViewById(R.id.leveling_switch);
         mLayoutFour  = (LinearLayout) v.findViewById(R.id.layout_leveling_four);
+        mTable = (TableLayout) v.findViewById(R.id.layout_leveling_general);
         mCalcButton  = (Button) v.findViewById(R.id.btn_calc);
         mResetButton = (Button) v.findViewById(R.id.btn_reset);
         mParamKBack  = (Spinner) v.findViewById(R.id.param_k_back);
@@ -128,6 +132,9 @@ public class LevelingFragment extends BaseCalculateFragment {
                 if (isChecked) {
                     mLevelingType = FOUR_LEVELING;
                     mLayoutFour.setVisibility(View.VISIBLE);
+                    Animation animation = AnimationUtils
+                            .loadAnimation(getActivity(), R.anim.left_to_right_in);
+                    mLayoutFour.startAnimation(animation);
                 } else {
                     mLevelingType = GENERAL_LEVELING;
                     mLayoutFour.setVisibility(View.GONE);
