@@ -22,7 +22,6 @@
         android:layout_alignParentEnd="true"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:shadowColor="@color/primary_light"
         android:textColor="@color/title_primary"
         android:textSize="12sp"
         android:textOff="@string/title_leveling_general"

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="setting_title">设置</string>
-    <string name="other_title">其他</string>
 
     <string name="standard_title">标准设置</string>
     <string name="leveling_standard">水准测量ΔH误差标准</string>
@@ -13,8 +12,15 @@
     <string name="traverse_vertical_standard">竖盘指标差误差范围</string>
     <string name="traverse_vertical_standard_default">60</string>
 
+    <string name="other_title">其他</string>
+    <string name="check_update">检查更新</string>
+    <string name="checking_update">正在获取版本信息</string>
+    <string name="text_latest_version">当前是最新版本，不需要更新</string>
+    <string name="text_need_update">登陆者最新版本为%s，需要更新吗？</string>
+    <string name="text_title_update">发现新版本</string>
     <string name="other_aboutme">关于测量助手</string>
-    
+
+    <string name="update_url">http://pan.baidu.com/s/1eQ3y0uA</string>
     <string name="text_now_version">当前版本 %s</string>
     <string name="text_about_me">  测量助手旨在帮助测量实习的童鞋方便计算验证测量结果~\n\nAuthor: 大石碎胸口 菠萝蜜\n\nGitHub: mcxr4299/SurveyHelper\n\nLicense: GPL2.0\n\nCS GIS合作完成( ^ω^)</string>
 </resources>

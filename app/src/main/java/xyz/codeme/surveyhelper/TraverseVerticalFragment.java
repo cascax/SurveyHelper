@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import xyz.codeme.surveyhelper.data.Angle;
 
@@ -28,6 +30,7 @@ public class TraverseVerticalFragment extends BaseCalculateFragment {
     protected TextView mResultArg;
     protected Button mCalcButton;
     protected Button mResetButton;
+    protected ToggleButton mDirectionToggle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class TraverseVerticalFragment extends BaseCalculateFragment {
         mResultInfo       = (TextView) v.findViewById(R.id.result_info);
         mResultDifferent  = (TextView) v.findViewById(R.id.result_different);
         mResultArg        = (TextView) v.findViewById(R.id.result_arg);
+        mDirectionToggle  = (ToggleButton) v.findViewById(R.id.traverse_switch);
     }
 
     @Override
@@ -97,13 +101,18 @@ public class TraverseVerticalFragment extends BaseCalculateFragment {
         Angle angleLeft = new Angle(mAngleLeftDu.getText().toString(),
                 mAngleLeftFen.getText().toString(),
                 mAngleLeftMiao.getText().toString());
-        Angle resultLeft = new Angle(90).subtract(angleLeft);
+        // 判断顺时针逆时针度盘
+        Angle resultLeft = mDirectionToggle.isChecked() ?
+                new Angle(90).subtract(angleLeft)
+                : angleLeft.copy().subtract(new Angle(90));
         mAngelResultLeft.setText(resultLeft.toString());
 
         Angle angleRight = new Angle(mAngleRightDu.getText().toString(),
                 mAngleRightFen.getText().toString(),
                 mAngleRightMiao.getText().toString());
-        Angle resultRight = angleRight.copy().subtract(new Angle(270));
+        Angle resultRight = mDirectionToggle.isChecked() ?
+                angleRight.copy().subtract(new Angle(270))
+                : new Angle(270).subtract(angleRight);
         mAngelResultRight.setText(resultRight.toString());
 
         // 误差分析，计算一测回平均角值
