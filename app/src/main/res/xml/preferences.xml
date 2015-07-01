@@ -29,6 +29,9 @@
     <PreferenceCategory
         android:title="@string/other_title">
         <Preference
+            android:key="check_update"
+            android:title="@string/check_update" />
+        <Preference
             android:key="about_me"
             android:title="@string/other_aboutme" />
     </PreferenceCategory>

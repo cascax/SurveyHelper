@@ -10,6 +10,7 @@
     <string name="btn_calc">计算</string>
     <string name="btn_reset">清除</string>
     <string name="btn_ok">确定</string>
+    <string name="btn_cancel">取消</string>
 
     <string name="sign_du">°</string>
     <string name="sign_fen">′</string>
@@ -52,6 +53,8 @@
     <string name="survey_vertical_right">竖盘位置右</string>
     <string name="survey_vertical_read">竖盘读数</string>
     <string name="survey_vertical_different">竖盘指标差</string>
+    <string name="survey_vertical_clockwise">顺时针度盘</string>
+    <string name="survey_vertical_anticlockwise">逆时针度盘</string>
 
     <string name="action_settings">设置</string>
 

@@ -13,6 +13,18 @@
     android:orientation="vertical"
     android:focusableInTouchMode="true">
 
+    <ToggleButton
+        android:id="@+id/traverse_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="@color/title_primary"
+        android:textSize="12sp"
+        android:checked="true"
+        android:textOff="@string/survey_vertical_anticlockwise"
+        android:textOn="@string/survey_vertical_clockwise"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
