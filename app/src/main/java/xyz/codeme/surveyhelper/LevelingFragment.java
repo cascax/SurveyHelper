@@ -68,6 +68,12 @@ public class LevelingFragment extends BaseCalculateFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mLayoutFour.clearAnimation();
+    }
+
+    @Override
     protected void initGetView(View v) {
         mLevelingSwitch = (ToggleButton) v.findViewById(R.id.leveling_switch);
         mLayoutFour  = (LinearLayout) v.findViewById(R.id.layout_leveling_four);
