@@ -8,6 +8,8 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorButtonNormal">@color/primary</item>
+        <item name="colorControlActivated">@color/primary</item>
+        <!--<item name="colorControlHighlight">@color/primary</item>-->
         <item name="android:textColorPrimary">@color/text_primary</item>
         <item name="android:windowBackground">@color/primary_background</item>
     </style>

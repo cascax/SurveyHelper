@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -254,7 +257,7 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_reset"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -263,7 +266,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:textColor="@color/title_primary" />
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_calc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -292,5 +295,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
-
 </LinearLayout>
+</ScrollView>

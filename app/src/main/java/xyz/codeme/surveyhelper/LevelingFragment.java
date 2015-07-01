@@ -25,7 +25,6 @@ public class LevelingFragment extends BaseCalculateFragment {
 
     private ToggleButton mLevelingSwitch;
     private LinearLayout mLayoutFour;
-    private TableLayout mTable;
     private Button mCalcButton;
     private Button mResetButton;
 
@@ -72,7 +71,6 @@ public class LevelingFragment extends BaseCalculateFragment {
     protected void initGetView(View v) {
         mLevelingSwitch = (ToggleButton) v.findViewById(R.id.leveling_switch);
         mLayoutFour  = (LinearLayout) v.findViewById(R.id.layout_leveling_four);
-        mTable = (TableLayout) v.findViewById(R.id.layout_leveling_general);
         mCalcButton  = (Button) v.findViewById(R.id.btn_calc);
         mResetButton = (Button) v.findViewById(R.id.btn_reset);
         mParamKBack  = (Spinner) v.findViewById(R.id.param_k_back);
