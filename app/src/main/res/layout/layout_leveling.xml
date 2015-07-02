@@ -24,6 +24,7 @@
         android:paddingRight="20dp"
         android:textColor="@color/title_primary"
         android:textSize="12sp"
+        android:layout_marginBottom="5dp"
         android:textOff="@string/title_leveling_general"
         android:textOn="@string/title_leveling_four"/>
 
@@ -32,17 +33,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/leveling_switch"
-        android:layout_marginTop="5dp"
         android:orientation="vertical"
         android:visibility="gone">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
             android:text="@string/leveling_back"
-            android:background="@color/primary"
-            android:textColor="@color/title_primary"
-            android:layout_marginBottom="5dp" />
+            style="@style/AppTheme.BannerTitle" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -92,13 +87,8 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
             android:text="@string/leveling_front"
-            android:background="@color/primary"
-            android:textColor="@color/title_primary"
-            android:layout_marginBottom="5dp" />
+            style="@style/AppTheme.BannerTitle" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -150,7 +140,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal">
 
             <TextView
@@ -174,18 +164,12 @@
         android:id="@+id/layout_leveling_general"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_below="@id/layout_leveling_four"
         android:gravity="center"
         android:stretchColumns="1,2">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
             android:text="@string/leveling_general"
-            android:background="@color/primary"
-            android:textColor="@color/title_primary"
-            android:layout_marginBottom="5dp" />
+            style="@style/AppTheme.BannerTitle" />
         <TableRow>
             <TextView
                 android:layout_width="match_parent"
@@ -318,22 +302,12 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_reset"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/btn_reset"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textColor="@color/title_primary" />
+            style="@style/AppTheme.Button" />
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_calc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/btn_calc"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textColor="@color/title_primary" />
+            style="@style/AppTheme.Button" />
     </LinearLayout>
 </RelativeLayout>
 </ScrollView>

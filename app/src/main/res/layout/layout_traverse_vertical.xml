@@ -23,25 +23,20 @@
         android:textColor="@color/title_primary"
         android:textSize="12sp"
         android:checked="true"
+        android:layout_marginBottom="5dp"
         android:textOff="@string/survey_vertical_anticlockwise"
         android:textOn="@string/survey_vertical_clockwise"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="3dp"
         android:text="@string/survey_vertical_left"
-        android:background="@color/primary"
-        android:textColor="@color/title_primary"
-        android:layout_marginBottom="5dp" />
+        style="@style/AppTheme.BannerTitle"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/survey_vertical_read"/>
+            android:text="@string/survey_vertical_read"
+            style="@style/AppTheme.TextView"/>
         <EditText
             android:id="@+id/angle_left_du"
             android:layout_width="0dp"
@@ -88,33 +83,23 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="@string/survey_result"/>
+            android:text="@string/survey_result"
+            style="@style/AppTheme.ResultText"/>
         <TextView
             android:id="@+id/angle_result_left"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            style="@style/AppTheme.TextView"/>
     </LinearLayout>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="3dp"
         android:text="@string/survey_vertical_right"
-        android:background="@color/primary"
-        android:textColor="@color/title_primary"
-        android:layout_marginBottom="5dp" />
+        style="@style/AppTheme.BannerTitle"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/survey_vertical_read"/>
+            android:text="@string/survey_vertical_read"
+            style="@style/AppTheme.TextView"/>
         <EditText
             android:id="@+id/angle_right_du"
             android:layout_width="0dp"
@@ -163,15 +148,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="@string/survey_result"/>
+            android:text="@string/survey_result"
+            style="@style/AppTheme.ResultText"/>
         <TextView
             android:id="@+id/angle_result_right"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            style="@style/AppTheme.TextView"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -181,22 +162,12 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_reset"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/btn_reset"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textColor="@color/title_primary" />
+            style="@style/AppTheme.Button"/>
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_calc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/btn_calc"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textColor="@color/title_primary" />
+            style="@style/AppTheme.Button"/>
     </LinearLayout>
 
     <TextView
@@ -208,14 +179,12 @@
 
     <TextView
         android:id="@+id/result_different"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/AppTheme.TextView"
         android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/result_arg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/AppTheme.TextView"
         android:layout_gravity="center"/>
 
 </LinearLayout>
