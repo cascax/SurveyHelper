@@ -33,18 +33,18 @@ public class TraverseVerticalFragment extends BaseCalculateFragment {
     protected ToggleButton mDirectionToggle;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mDeviationStandard = getStandard("traverse_vertical_standard", 60) / 3600;
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.layout_traverse_vertical, container, false);
         init(v);
         initButtonListener();
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mDeviationStandard = getStandard("traverse_vertical_standard", 60) / 3600;
     }
 
     @Override

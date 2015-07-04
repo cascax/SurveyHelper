@@ -55,7 +55,6 @@ public class LevelingFragment extends BaseCalculateFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         paramK = getResources().getStringArray(R.array.param_k);
-        mDeltaHStandard = getStandard("leveling_standard", 5);
     }
 
     @Override
@@ -71,6 +70,7 @@ public class LevelingFragment extends BaseCalculateFragment {
     public void onResume() {
         super.onResume();
         mLayoutFour.clearAnimation();
+        mDeltaHStandard = getStandard("leveling_standard", 5);
     }
 
     @Override
