@@ -67,6 +67,7 @@ public abstract class BaseCalculateFragment extends Fragment {
      * @return  标准值
      */
     protected double getStandard(String key, double defaultValue) {
+        Log.d("TAG",key+mPreferences.getString(key, Double.toString(defaultValue)));
         return Double.parseDouble(
                 mPreferences.getString(key, Double.toString(defaultValue)));
     }

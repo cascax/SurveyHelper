@@ -35,18 +35,18 @@ public class TraverseHorizontalFragment extends BaseCalculateFragment {
     protected Button   mResetButton;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mDeviationStandard = getStandard("traverse_horizontal_standard", 18) / 3600;
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.layout_traverse_horizontal, container, false);
         init(v);
         initButtonListener();
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mDeviationStandard = getStandard("traverse_horizontal_standard", 18) / 3600;
     }
 
     @Override
