@@ -162,7 +162,8 @@
             android:gravity="end"
             android:inputType="number"
             android:ems="10"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:imeOptions="actionDone" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -209,7 +210,8 @@
             android:gravity="end"
             android:inputType="number"
             android:ems="10"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:imeOptions="actionNext" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

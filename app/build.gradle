@@ -8,8 +8,8 @@ android {
         applicationId "xyz.codeme.surveyhelper"
         minSdkVersion 16
         targetSdkVersion 21
-        versionCode 6
-        versionName "0.2.3"
+        versionCode 7
+        versionName "0.3.0"
     }
     buildTypes {
         release {
