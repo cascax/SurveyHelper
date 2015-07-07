@@ -80,12 +80,12 @@ public class TraverseHorizontalFragment extends BaseCalculateFragment {
         mEditTextList.add(mAngleB1Du);
         mEditTextList.add(mAngleB1Fen);
         mEditTextList.add(mAngleB1Miao);
-        mEditTextList.add(mAngleA2Du);
-        mEditTextList.add(mAngleA2Fen);
-        mEditTextList.add(mAngleA2Miao);
         mEditTextList.add(mAngleB2Du);
         mEditTextList.add(mAngleB2Fen);
         mEditTextList.add(mAngleB2Miao);
+        mEditTextList.add(mAngleA2Du);
+        mEditTextList.add(mAngleA2Fen);
+        mEditTextList.add(mAngleA2Miao);
     }
 
     private void initButtonListener() {
