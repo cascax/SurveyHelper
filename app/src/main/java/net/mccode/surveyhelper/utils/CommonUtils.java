@@ -1,4 +1,4 @@
-package xyz.codeme.surveyhelper.utils;
+package net.mccode.surveyhelper.utils;
 
 import android.app.Activity;
 import android.content.pm.PackageInfo;

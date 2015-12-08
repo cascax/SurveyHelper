@@ -1,4 +1,4 @@
-package xyz.codeme.surveyhelper;
+package net.mccode.surveyhelper;
 
 
 import android.app.AlertDialog;
@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import xyz.codeme.surveyhelper.utils.CommonUtils;
+import net.mccode.surveyhelper.utils.CommonUtils;
 
 public class SettingsFragment extends PreferenceFragment {
     private static final String TAG = "SettingsTAG";
@@ -125,7 +125,7 @@ public class SettingsFragment extends PreferenceFragment {
     };
 
     private class CheckUpdate implements Runnable {
-        private static final String URL = "http://codeme.xyz/api/surveyVersion.php";
+        private static final String URL = "http://mccode.net/api/surveyVersion.php";
         private Handler handler;
         public CheckUpdate(Handler handler) {
             this.handler = handler;

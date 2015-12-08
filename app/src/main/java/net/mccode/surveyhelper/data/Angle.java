@@ -1,4 +1,4 @@
-package xyz.codeme.surveyhelper.data;
+package net.mccode.surveyhelper.data;
 
 public class Angle {
     private int du;
