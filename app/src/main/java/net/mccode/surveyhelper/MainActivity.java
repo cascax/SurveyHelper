@@ -1,4 +1,4 @@
-package xyz.codeme.surveyhelper;
+package net.mccode.surveyhelper;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;

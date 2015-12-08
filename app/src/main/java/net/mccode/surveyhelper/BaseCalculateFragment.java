@@ -1,4 +1,4 @@
-package xyz.codeme.surveyhelper;
+package net.mccode.surveyhelper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,9 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;

@@ -1,4 +1,4 @@
-package xyz.codeme.surveyhelper;
+package net.mccode.surveyhelper;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import xyz.codeme.surveyhelper.data.Angle;
+import net.mccode.surveyhelper.data.Angle;
 
 
 public class TraverseHorizontalFragment extends BaseCalculateFragment {
