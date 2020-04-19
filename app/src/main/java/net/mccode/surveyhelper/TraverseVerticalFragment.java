@@ -1,6 +1,7 @@
 package net.mccode.surveyhelper;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,25 +11,34 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import androidx.fragment.app.Fragment;
+
 import net.mccode.surveyhelper.data.Angle;
 
 public class TraverseVerticalFragment extends BaseCalculateFragment {
     private double mDeviationStandard;
 
-    protected EditText mAngleLeftDu;
-    protected EditText mAngleLeftFen;
-    protected EditText mAngleLeftMiao;
-    protected EditText mAngleRightDu;
-    protected EditText mAngleRightFen;
-    protected EditText mAngleRightMiao;
-    protected TextView mAngelResultLeft;
-    protected TextView mAngelResultRight;
-    protected TextView mResultInfo;
-    protected TextView mResultDifferent;
-    protected TextView mResultArg;
-    protected Button mCalcButton;
-    protected Button mResetButton;
-    protected ToggleButton mDirectionToggle;
+    private EditText mAngleLeftDu;
+    private EditText mAngleLeftFen;
+    private EditText mAngleLeftMiao;
+    private EditText mAngleRightDu;
+    private EditText mAngleRightFen;
+    private EditText mAngleRightMiao;
+    private TextView mAngelResultLeft;
+    private TextView mAngelResultRight;
+    private TextView mResultInfo;
+    private TextView mResultDifferent;
+    private TextView mResultArg;
+    private Button mCalcButton;
+    private Button mResetButton;
+    private ToggleButton mDirectionToggle;
+
+    static Fragment newInstance() {
+        TraverseVerticalFragment fragment = new TraverseVerticalFragment();
+        Bundle bundle = new Bundle();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,20 +57,20 @@ public class TraverseVerticalFragment extends BaseCalculateFragment {
 
     @Override
     protected void initGetView(View v) {
-        mAngleLeftDu    = (EditText) v.findViewById(R.id.angle_left_du);
-        mAngleLeftFen   = (EditText) v.findViewById(R.id.angle_left_fen);
-        mAngleLeftMiao  = (EditText) v.findViewById(R.id.angle_left_miao);
-        mAngleRightDu   = (EditText) v.findViewById(R.id.angle_right_du);
-        mAngleRightFen  = (EditText) v.findViewById(R.id.angle_right_fen);
-        mAngleRightMiao = (EditText) v.findViewById(R.id.angle_right_miao);
-        mCalcButton  = (Button) v.findViewById(R.id.btn_calc);
-        mResetButton = (Button) v.findViewById(R.id.btn_reset);
-        mAngelResultLeft  = (TextView) v.findViewById(R.id.angle_result_left);
-        mAngelResultRight = (TextView) v.findViewById(R.id.angle_result_right);
-        mResultInfo       = (TextView) v.findViewById(R.id.result_info);
-        mResultDifferent  = (TextView) v.findViewById(R.id.result_different);
-        mResultArg        = (TextView) v.findViewById(R.id.result_arg);
-        mDirectionToggle  = (ToggleButton) v.findViewById(R.id.traverse_switch);
+        mAngleLeftDu = v.findViewById(R.id.angle_left_du);
+        mAngleLeftFen = v.findViewById(R.id.angle_left_fen);
+        mAngleLeftMiao = v.findViewById(R.id.angle_left_miao);
+        mAngleRightDu = v.findViewById(R.id.angle_right_du);
+        mAngleRightFen = v.findViewById(R.id.angle_right_fen);
+        mAngleRightMiao = v.findViewById(R.id.angle_right_miao);
+        mCalcButton = v.findViewById(R.id.btn_calc);
+        mResetButton = v.findViewById(R.id.btn_reset);
+        mAngelResultLeft = v.findViewById(R.id.angle_result_left);
+        mAngelResultRight = v.findViewById(R.id.angle_result_right);
+        mResultInfo = v.findViewById(R.id.result_info);
+        mResultDifferent = v.findViewById(R.id.result_different);
+        mResultArg = v.findViewById(R.id.result_arg);
+        mDirectionToggle = v.findViewById(R.id.traverse_switch);
     }
 
     @Override
@@ -93,6 +103,7 @@ public class TraverseVerticalFragment extends BaseCalculateFragment {
     /**
      * 计算水平角观测值
      */
+    @SuppressLint("SetTextI18n")
     @Override
     protected void calculate() {
         // 获取读数，计算半测回角值
@@ -118,7 +129,7 @@ public class TraverseVerticalFragment extends BaseCalculateFragment {
         mResultDifferent.setText(getString(R.string.survey_vertical_different)
                 + " "
                 + different.toString());
-        if(Math.abs(different.getRealDu()) < mDeviationStandard) {
+        if (Math.abs(different.getRealDu()) < mDeviationStandard) {
             mResultInfo.setText(getString(R.string.text_success));
             mResultInfo.setTextColor(getResources().getColor(R.color.success));
             mResultArg.setText(getString(R.string.survey_difference_arg)

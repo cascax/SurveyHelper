@@ -1,5 +1,6 @@
 package net.mccode.surveyhelper;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,31 +9,40 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import net.mccode.surveyhelper.data.Angle;
 
 
 public class TraverseHorizontalFragment extends BaseCalculateFragment {
     private double mDeviationStandard;
 
-    protected EditText mAngleA1Du;
-    protected EditText mAngleA1Fen;
-    protected EditText mAngleA1Miao;
-    protected EditText mAngleB1Du;
-    protected EditText mAngleB1Fen;
-    protected EditText mAngleB1Miao;
-    protected EditText mAngleA2Du;
-    protected EditText mAngleA2Fen;
-    protected EditText mAngleA2Miao;
-    protected EditText mAngleB2Du;
-    protected EditText mAngleB2Fen;
-    protected EditText mAngleB2Miao;
-    protected TextView mAngelResult1;
-    protected TextView mAngelResult2;
-    protected TextView mResultInfo;
-    protected TextView mResultDifferent;
-    protected TextView mResultArg;
-    protected Button   mCalcButton;
-    protected Button   mResetButton;
+    private EditText mAngleA1Du;
+    private EditText mAngleA1Fen;
+    private EditText mAngleA1Miao;
+    private EditText mAngleB1Du;
+    private EditText mAngleB1Fen;
+    private EditText mAngleB1Miao;
+    private EditText mAngleA2Du;
+    private EditText mAngleA2Fen;
+    private EditText mAngleA2Miao;
+    private EditText mAngleB2Du;
+    private EditText mAngleB2Fen;
+    private EditText mAngleB2Miao;
+    private TextView mAngelResult1;
+    private TextView mAngelResult2;
+    private TextView mResultInfo;
+    private TextView mResultDifferent;
+    private TextView mResultArg;
+    private Button mCalcButton;
+    private Button mResetButton;
+
+    static Fragment newInstance() {
+        TraverseHorizontalFragment fragment = new TraverseHorizontalFragment();
+        Bundle bundle = new Bundle();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,25 +61,25 @@ public class TraverseHorizontalFragment extends BaseCalculateFragment {
 
     @Override
     protected void initGetView(View v) {
-        mAngleA1Du   = (EditText) v.findViewById(R.id.angle_1a_du);
-        mAngleA1Fen  = (EditText) v.findViewById(R.id.angle_1a_fen);
-        mAngleA1Miao = (EditText) v.findViewById(R.id.angle_1a_miao);
-        mAngleB1Du   = (EditText) v.findViewById(R.id.angle_1b_du);
-        mAngleB1Fen  = (EditText) v.findViewById(R.id.angle_1b_fen);
-        mAngleB1Miao = (EditText) v.findViewById(R.id.angle_1b_miao);
-        mAngleA2Du   = (EditText) v.findViewById(R.id.angle_2a_du);
-        mAngleA2Fen  = (EditText) v.findViewById(R.id.angle_2a_fen);
-        mAngleA2Miao = (EditText) v.findViewById(R.id.angle_2a_miao);
-        mAngleB2Du   = (EditText) v.findViewById(R.id.angle_2b_du);
-        mAngleB2Fen  = (EditText) v.findViewById(R.id.angle_2b_fen);
-        mAngleB2Miao = (EditText) v.findViewById(R.id.angle_2b_miao);
-        mCalcButton  = (Button) v.findViewById(R.id.btn_calc);
-        mResetButton = (Button) v.findViewById(R.id.btn_reset);
-        mAngelResult1    = (TextView) v.findViewById(R.id.angle_result1);
-        mAngelResult2    = (TextView) v.findViewById(R.id.angle_result2);
-        mResultInfo      = (TextView) v.findViewById(R.id.result_info);
-        mResultDifferent = (TextView) v.findViewById(R.id.result_different);
-        mResultArg       = (TextView) v.findViewById(R.id.result_arg);
+        mAngleA1Du = v.findViewById(R.id.angle_1a_du);
+        mAngleA1Fen = v.findViewById(R.id.angle_1a_fen);
+        mAngleA1Miao = v.findViewById(R.id.angle_1a_miao);
+        mAngleB1Du = v.findViewById(R.id.angle_1b_du);
+        mAngleB1Fen = v.findViewById(R.id.angle_1b_fen);
+        mAngleB1Miao = v.findViewById(R.id.angle_1b_miao);
+        mAngleA2Du = v.findViewById(R.id.angle_2a_du);
+        mAngleA2Fen = v.findViewById(R.id.angle_2a_fen);
+        mAngleA2Miao = v.findViewById(R.id.angle_2a_miao);
+        mAngleB2Du = v.findViewById(R.id.angle_2b_du);
+        mAngleB2Fen = v.findViewById(R.id.angle_2b_fen);
+        mAngleB2Miao = v.findViewById(R.id.angle_2b_miao);
+        mCalcButton = v.findViewById(R.id.btn_calc);
+        mResetButton = v.findViewById(R.id.btn_reset);
+        mAngelResult1 = v.findViewById(R.id.angle_result1);
+        mAngelResult2 = v.findViewById(R.id.angle_result2);
+        mResultInfo = v.findViewById(R.id.result_info);
+        mResultDifferent = v.findViewById(R.id.result_different);
+        mResultArg = v.findViewById(R.id.result_arg);
     }
 
     @Override
@@ -108,6 +118,7 @@ public class TraverseHorizontalFragment extends BaseCalculateFragment {
     /**
      * 计算水平角观测值
      */
+    @SuppressLint("SetTextI18n")
     @Override
     protected void calculate() {
         // 获取上半测回角A、B，计算差
@@ -118,7 +129,7 @@ public class TraverseHorizontalFragment extends BaseCalculateFragment {
                 mAngleB1Fen.getText().toString(),
                 mAngleB1Miao.getText().toString());
         Angle different1 = angleB1.copy().subtract(angleA1);
-        if(different1.getRealDu() < 0)
+        if (different1.getRealDu() < 0)
             different1.add(new Angle(360));
         mAngelResult1.setText(different1.toString());
 
@@ -130,7 +141,7 @@ public class TraverseHorizontalFragment extends BaseCalculateFragment {
                 mAngleB2Fen.getText().toString(),
                 mAngleB2Miao.getText().toString());
         Angle different2 = angleB2.copy().subtract(angleA2);
-        if(different2.getRealDu() < 0)
+        if (different2.getRealDu() < 0)
             different2.add(new Angle(360));
         mAngelResult2.setText(different2.toString());
 
@@ -139,7 +150,7 @@ public class TraverseHorizontalFragment extends BaseCalculateFragment {
         mResultDifferent.setText(getString(R.string.survey_difference)
                 + " "
                 + different.toString());
-        if(Math.abs(different.getRealDu()) < mDeviationStandard) {
+        if (Math.abs(different.getRealDu()) < mDeviationStandard) {
             mResultInfo.setText(getString(R.string.text_success));
             mResultInfo.setTextColor(getResources().getColor(R.color.success));
             mResultArg.setText(getString(R.string.survey_difference_arg)

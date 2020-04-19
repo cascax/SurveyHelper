@@ -1,5 +1,6 @@
 package net.mccode.surveyhelper;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import androidx.fragment.app.Fragment;
+
+import java.util.logging.Level;
 
 
 public class LevelingFragment extends BaseCalculateFragment {
@@ -50,6 +55,13 @@ public class LevelingFragment extends BaseCalculateFragment {
     private Spinner mParamKBack; // 后面K
     private Spinner mParamKFront;
 
+    static Fragment newInstance() {
+        LevelingFragment fragment = new LevelingFragment();
+        Bundle bundle = new Bundle();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,31 +86,31 @@ public class LevelingFragment extends BaseCalculateFragment {
 
     @Override
     protected void initGetView(View v) {
-        mLevelingSwitch = (ToggleButton) v.findViewById(R.id.leveling_switch);
-        mLayoutFour  = (LinearLayout) v.findViewById(R.id.layout_leveling_four);
-        mCalcButton  = (Button) v.findViewById(R.id.btn_calc);
-        mResetButton = (Button) v.findViewById(R.id.btn_reset);
-        mParamKBack  = (Spinner) v.findViewById(R.id.param_k_back);
-        mParamKFront = (Spinner) v.findViewById(R.id.param_k_front);
-        mEditBackDown  = (EditText) v.findViewById(R.id.edit_back_down);
-        mEditBackUp    = (EditText) v.findViewById(R.id.edit_back_up);
-        mEditFrontDown = (EditText) v.findViewById(R.id.edit_front_down);
-        mEditFrontUp   = (EditText) v.findViewById(R.id.edit_front_up);
-        mEditBlackBack = (EditText) v.findViewById(R.id.edit_black_back);
-        mEditRedBack   = (EditText) v.findViewById(R.id.edit_red_back);
-        mEditBlackFront= (EditText) v.findViewById(R.id.edit_black_front);
-        mEditRedFront  = (EditText) v.findViewById(R.id.edit_red_front);
-        mDistanceBack      = (TextView) v.findViewById(R.id.distance_back);
-        mDistanceFront     = (TextView) v.findViewById(R.id.distance_front);
-        mDistanceDifferent = (TextView) v.findViewById(R.id.distance_different);
-        mDistanceInfo      = (TextView) v.findViewById(R.id.distance_info);
-        mBrDifferentBack   = (TextView) v.findViewById(R.id.br_different_back);
-        mBrDifferentFront  = (TextView) v.findViewById(R.id.br_different_front);
-        mBfDifferentBlack  = (TextView) v.findViewById(R.id.bf_different_black);
-        mBfDifferentRed    = (TextView) v.findViewById(R.id.bf_different_red);
-        mHeightDifferent   = (TextView) v.findViewById(R.id.height_different);
-        mLevelingDeltaH    = (TextView) v.findViewById(R.id.leveling_delta_h);
-        mLevelingInfo      = (TextView) v.findViewById(R.id.leveling_info);
+        mLevelingSwitch = v.findViewById(R.id.leveling_switch);
+        mLayoutFour = v.findViewById(R.id.layout_leveling_four);
+        mCalcButton = v.findViewById(R.id.btn_calc);
+        mResetButton = v.findViewById(R.id.btn_reset);
+        mParamKBack = v.findViewById(R.id.param_k_back);
+        mParamKFront = v.findViewById(R.id.param_k_front);
+        mEditBackDown = v.findViewById(R.id.edit_back_down);
+        mEditBackUp = v.findViewById(R.id.edit_back_up);
+        mEditFrontDown = v.findViewById(R.id.edit_front_down);
+        mEditFrontUp = v.findViewById(R.id.edit_front_up);
+        mEditBlackBack = v.findViewById(R.id.edit_black_back);
+        mEditRedBack = v.findViewById(R.id.edit_red_back);
+        mEditBlackFront = v.findViewById(R.id.edit_black_front);
+        mEditRedFront = v.findViewById(R.id.edit_red_front);
+        mDistanceBack = v.findViewById(R.id.distance_back);
+        mDistanceFront = v.findViewById(R.id.distance_front);
+        mDistanceDifferent = v.findViewById(R.id.distance_different);
+        mDistanceInfo = v.findViewById(R.id.distance_info);
+        mBrDifferentBack = v.findViewById(R.id.br_different_back);
+        mBrDifferentFront = v.findViewById(R.id.br_different_front);
+        mBfDifferentBlack = v.findViewById(R.id.bf_different_black);
+        mBfDifferentRed = v.findViewById(R.id.bf_different_red);
+        mHeightDifferent = v.findViewById(R.id.height_different);
+        mLevelingDeltaH = v.findViewById(R.id.leveling_delta_h);
+        mLevelingInfo = v.findViewById(R.id.leveling_info);
     }
 
     @Override
@@ -154,18 +166,18 @@ public class LevelingFragment extends BaseCalculateFragment {
     }
 
     private void calculateGeneral() {
-        double blackBack   = getValue(mEditBlackBack),
+        double blackBack = getValue(mEditBlackBack),
                 blackFront = getValue(mEditBlackFront),
-                redBack    = getValue(mEditRedBack),
-                redFront   = getValue(mEditRedFront),
+                redBack = getValue(mEditRedBack),
+                redFront = getValue(mEditRedFront),
                 paramKBack = getValue(mParamKBack),
-                paramKFront= getValue(mParamKFront);
+                paramKFront = getValue(mParamKFront);
         double bfDifferentBlack = blackBack - blackFront,
-                bfDifferentRed  = redBack - redFront;
+                bfDifferentRed = redBack - redFront;
         showValue(mBfDifferentBlack, bfDifferentBlack);
         showValue(mBfDifferentRed, bfDifferentRed);
         double brDifferentBack = paramKBack + blackBack - redBack,
-                brDifferentFront  = paramKFront + blackFront - redFront;
+                brDifferentFront = paramKFront + blackFront - redFront;
         showValue(mBrDifferentBack, brDifferentBack);
         showValue(mBrDifferentFront, brDifferentFront);
         int param100 = paramKBack == 4787 ? -100 : 100;
@@ -173,7 +185,7 @@ public class LevelingFragment extends BaseCalculateFragment {
         showValue(mHeightDifferent, heightDifferent);
         double deltaH = bfDifferentBlack - param100 - bfDifferentRed;
         showValue(mLevelingDeltaH, deltaH);
-        if(Math.abs(deltaH) < mDeltaHStandard) {
+        if (Math.abs(deltaH) < mDeltaHStandard) {
             mLevelingInfo.setText(getString(R.string.text_success));
             mLevelingInfo.setTextColor(getResources().getColor(R.color.success));
         } else {
@@ -183,17 +195,17 @@ public class LevelingFragment extends BaseCalculateFragment {
     }
 
     private void calculateFour() {
-        double backDown   = getValue(mEditBackDown),
-                backUp    = getValue(mEditBackUp),
+        double backDown = getValue(mEditBackDown),
+                backUp = getValue(mEditBackUp),
                 frontDown = getValue(mEditFrontDown),
-                frontUp   = getValue(mEditFrontUp);
-        double distanceBack   = backDown - backUp,
+                frontUp = getValue(mEditFrontUp);
+        double distanceBack = backDown - backUp,
                 distanceFront = frontDown - frontUp;
         showValue(mDistanceBack, distanceBack);
         showValue(mDistanceFront, distanceFront);
         double different = distanceBack - distanceFront;
         showValue(mDistanceDifferent, different);
-        if(Math.abs(different) < 3000) {
+        if (Math.abs(different) < 3000) {
             mDistanceInfo.setText(getString(R.string.text_success));
             mDistanceInfo.setTextColor(getResources().getColor(R.color.success));
         } else {
@@ -204,15 +216,16 @@ public class LevelingFragment extends BaseCalculateFragment {
 
     private double getValue(EditText edit) {
         String value = edit.getText().toString();
-        if(value.length() < 1)
+        if (value.length() < 1)
             return 0;
         return Double.parseDouble(value);
     }
 
     private double getValue(Spinner spinner) {
-        return Double.parseDouble(paramK[(int)spinner.getSelectedItemId()]);
+        return Double.parseDouble(paramK[(int) spinner.getSelectedItemId()]);
     }
 
+    @SuppressLint("SetTextI18n")
     private void showValue(TextView text, double value) {
         text.setText(Double.toString(value));
     }

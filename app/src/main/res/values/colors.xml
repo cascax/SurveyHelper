@@ -7,6 +7,6 @@
     <color name="title_primary">#FFF</color>
     <color name="primary_background">#FFF</color>
 
-    <color name="success">#46D917</color>
-    <color name="fail">#FA2131</color>
+    <color name="success">#4CAF50</color>
+    <color name="fail">#D81B60</color>
 </resources>

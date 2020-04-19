@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:title="@string/standard_title">
+        app:title="@string/standard_title">
+
         <EditTextPreference
-            android:key="leveling_standard"
-            android:inputType="numberDecimal"
-            android:title="@string/leveling_standard"
-            android:defaultValue="@string/leveling_standard_default"
-            android:summary="@string/leveling_standard_summary"
-            android:selectAllOnFocus="true" />
+            app:key="leveling_standard"
+            app:title="@string/leveling_standard"
+            app:defaultValue="@string/leveling_standard_default"
+            app:summary="@string/leveling_standard_summary" />
+
         <EditTextPreference
-            android:key="traverse_horizontal_standard"
-            android:inputType="numberDecimal"
-            android:title="@string/traverse_horizontal_standard"
-            android:defaultValue="@string/traverse_horizontal_standard_default"
-            android:summary="@string/traverse_standard_summary"
-            android:selectAllOnFocus="true" />
+            app:key="traverse_horizontal_standard"
+            app:title="@string/traverse_horizontal_standard"
+            app:defaultValue="@string/traverse_horizontal_standard_default"
+            app:summary="@string/traverse_standard_summary" />
+
         <EditTextPreference
-            android:key="traverse_vertical_standard"
-            android:inputType="numberDecimal"
-            android:title="@string/traverse_vertical_standard"
-            android:defaultValue="@string/traverse_vertical_standard_default"
-            android:summary="@string/traverse_standard_summary"
-            android:selectAllOnFocus="true" />
+            app:key="traverse_vertical_standard"
+            app:title="@string/traverse_vertical_standard"
+            app:defaultValue="@string/traverse_vertical_standard_default"
+            app:summary="@string/traverse_standard_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/other_title">
+        app:title="@string/other_title">
+
         <Preference
-            android:key="check_update"
-            android:title="@string/check_update" />
+            app:key="check_update"
+            app:title="@string/check_update" />
+
         <Preference
-            android:key="about_me"
-            android:title="@string/other_aboutme" />
+            app:key="about_me"
+            app:title="@string/other_aboutme" />
+
     </PreferenceCategory>
 
-</PreferenceScreen>
+</androidx.preference.PreferenceScreen>
