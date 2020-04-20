@@ -1,23 +1,30 @@
 package net.mccode.surveyhelper;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.fragment.app.Fragment;
-
-import java.util.logging.Level;
 
 
 public class LevelingFragment extends BaseCalculateFragment {
@@ -141,19 +148,56 @@ public class LevelingFragment extends BaseCalculateFragment {
             }
         });
         // ToggleButton Listener
+        final Animation.AnimationListener animationListener = new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if (mLevelingType == GENERAL_LEVELING) {
+                    mLayoutFour.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        };
+
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        mLayoutFour.measure(size.x, size.y);
+
+        final int fourLayoutHeight = mLayoutFour.getMeasuredHeight();
+        Log.d("debug", "four layout height:" + fourLayoutHeight);
+        mLayoutFour.getLayoutParams().height = 0;
+        mLayoutFour.requestLayout();
+
         mLevelingSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton view, boolean isChecked) {
+                ValueAnimator va;
                 if (isChecked) {
                     mLevelingType = FOUR_LEVELING;
+                    va = ValueAnimator.ofInt(0, fourLayoutHeight);
                     mLayoutFour.setVisibility(View.VISIBLE);
-                    Animation animation = AnimationUtils
-                            .loadAnimation(getActivity(), R.anim.left_to_right_in);
-                    mLayoutFour.startAnimation(animation);
                 } else {
                     mLevelingType = GENERAL_LEVELING;
-                    mLayoutFour.setVisibility(View.GONE);
+                    va = ValueAnimator.ofInt(fourLayoutHeight, 0);
                 }
+                va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        int h = (Integer) valueAnimator.getAnimatedValue();
+                        mLayoutFour.getLayoutParams().height = h;
+                        mLayoutFour.setAlpha((float)h/(float)fourLayoutHeight);
+                        mLayoutFour.requestLayout();
+                    }
+                });
+                va.setDuration(300);
+                va.start();
             }
         });
     }

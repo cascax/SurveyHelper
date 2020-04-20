@@ -11,7 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true" >
 
     <ToggleButton
         android:id="@+id/leveling_switch"
@@ -23,7 +23,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:textColor="@color/title_primary"
-        android:textSize="12sp"
+        android:textSize="13sp"
         android:layout_marginBottom="5dp"
         android:textOff="@string/title_leveling_general"
         android:textOn="@string/title_leveling_four"/>
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/leveling_switch"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone" >
         <TextView
             android:text="@string/leveling_back"
             style="@style/AppTheme.BannerTitle" />
@@ -46,7 +46,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/leveling_down"/>
+                android:text="@string/leveling_down" />
             <EditText
                 android:id="@+id/edit_back_down"
                 android:layout_width="0dp"
@@ -300,14 +300,16 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_reset"
             android:text="@string/btn_reset"
             style="@style/AppTheme.Button" />
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_calc"
             android:text="@string/btn_calc"
             style="@style/AppTheme.Button" />
+
     </LinearLayout>
+
 </RelativeLayout>
 </ScrollView>

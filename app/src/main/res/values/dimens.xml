@@ -4,6 +4,7 @@
 
     <dimen name="banner_title_padding">3dp</dimen>
     <dimen name="banner_title_margin">2dp</dimen>
+    <dimen name="banner_title_margin_top">5dp</dimen>
     <dimen name="banner_title_size">14dp</dimen>
     <dimen name="text_size">14dp</dimen>
     <dimen name="result_text_size">14dp</dimen>

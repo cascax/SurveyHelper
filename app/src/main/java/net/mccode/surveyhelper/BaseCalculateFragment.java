@@ -19,6 +19,7 @@ import java.util.List;
 
 
 public abstract class BaseCalculateFragment extends Fragment {
+    private static final String TAG = "CalculateTAG";
     SharedPreferences mPreferences;
     List<EditText> mEditTextList;
 
@@ -69,9 +70,14 @@ public abstract class BaseCalculateFragment extends Fragment {
      * @return 标准值
      */
     double getStandard(String key, double defaultValue) {
-        Log.d("TAG", key + mPreferences.getString(key, Double.toString(defaultValue)));
-        return Double.parseDouble(
-                mPreferences.getString(key, Double.toString(defaultValue)));
+        Log.d(TAG, key + mPreferences.getString(key, Double.toString(defaultValue)));
+        try {
+            return Double.parseDouble(
+                    mPreferences.getString(key, Double.toString(defaultValue)));
+        } catch (NumberFormatException e) {
+            Log.w(TAG, "number format error", e);
+            return defaultValue;
+        }
     }
 
     public class EditorNextActionListener implements TextView.OnEditorActionListener {

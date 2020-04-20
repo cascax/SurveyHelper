@@ -237,11 +237,11 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_reset"
             android:text="@string/btn_reset"
             style="@style/AppTheme.Button" />
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_calc"
             android:text="@string/btn_calc"
             style="@style/AppTheme.Button" />

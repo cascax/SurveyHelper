@@ -21,11 +21,12 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:textColor="@color/title_primary"
-        android:textSize="12sp"
+        android:textSize="13sp"
         android:checked="true"
         android:layout_marginBottom="5dp"
         android:textOff="@string/survey_vertical_anticlockwise"
-        android:textOn="@string/survey_vertical_clockwise"/>
+        android:textOn="@string/survey_vertical_clockwise" />
+
     <TextView
         android:text="@string/survey_vertical_left"
         style="@style/AppTheme.BannerTitle"/>
@@ -160,11 +161,11 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_reset"
             android:text="@string/btn_reset"
             style="@style/AppTheme.Button"/>
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_calc"
             android:text="@string/btn_calc"
             style="@style/AppTheme.Button"/>

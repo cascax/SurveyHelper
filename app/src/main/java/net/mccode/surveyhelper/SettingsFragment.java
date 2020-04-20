@@ -9,18 +9,27 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.InputType;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.Preference;
+import androidx.preference.EditTextPreference;
+import androidx.preference.EditTextPreference.OnBindEditTextListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.regex.Pattern;
 
 import net.mccode.surveyhelper.utils.CommonUtils;
 
@@ -37,6 +46,19 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         updateHandler = new SettingsFragment.UpdateHandler(this);
+
+        OnBindEditTextListener listener = new OnBindEditTextListener() {
+            @Override
+            public void onBindEditText(@NonNull EditText editText) {
+                editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
+            }
+        };
+        EditTextPreference editTextPreference = getPreferenceManager().findPreference("leveling_standard");
+        editTextPreference.setOnBindEditTextListener(listener);
+        editTextPreference = getPreferenceManager().findPreference("traverse_horizontal_standard");
+        editTextPreference.setOnBindEditTextListener(listener);
+        editTextPreference = getPreferenceManager().findPreference("traverse_vertical_standard");
+        editTextPreference.setOnBindEditTextListener(listener);
     }
 
     @Override
@@ -48,13 +70,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 new Thread(new CheckUpdate(updateHandler)).start();
                 return true;
             case "about_me":
+                TextView message = new TextView(getContext());
+                final SpannableString s = new SpannableString(getText(R.string.text_about_me));
+                Linkify.addLinks(s, Pattern.compile("cascax/SurveyHelper"), "https://github.com/");
+                message.setText(s);
+                message.setMovementMethod(LinkMovementMethod.getInstance());
+                message.setTextSize(16);
+                message.setPadding(56, 40, 0, 56);
+                message.setTextColor(getResources().getColor(R.color.text_primary));
+
                 new AlertDialog.Builder(getActivity())
                         .setIcon(R.mipmap.ic_launcher)
                         .setTitle(String.format(
                                 getResources().getString(R.string.text_now_version),
                                 CommonUtils.getVersionName(getActivity())
                         ))
-                        .setMessage(R.string.text_about_me)
+                        .setView(message)
                         .setPositiveButton(R.string.btn_ok, null)
                         .show();
                 return true;
@@ -136,7 +167,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private class CheckUpdate implements Runnable {
-        private static final String URL = "https://app.mccode.net/version/SurveyHelper";
+        private static final String URL = "https://app.mccode.info/version/SurveyHelper";
+
         private Handler handler;
         private OkHttpClient client;
 
@@ -186,7 +218,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                             + json.getString("msg"));
                 }
             } catch (IOException e) {
-                Log.w(TAG, "版本号获取连接失败", e);
+                Log.w(TAG, "版本号API连接失败: " + e.getMessage(), e);
             } catch (JSONException e) {
                 Log.w(TAG, "JSON解析失败", e);
             } catch (NullPointerException e) {

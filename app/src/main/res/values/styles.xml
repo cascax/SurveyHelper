@@ -1,12 +1,5 @@
 <resources>
 
-<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
-<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--        <item name="colorAccent">@color/colorAccent</item>-->
-<!--    </style>-->
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.NoActionBar">
@@ -17,33 +10,31 @@
     <style name="AppTheme" parent="BaseTheme">
     </style>
 
-<!--    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
-    <style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+<!--    <style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <style name="BaseTheme" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorButtonNormal">@color/primary</item>
         <item name="colorControlActivated">@color/primary</item>
         <!--<item name="colorControlHighlight">@color/primary</item>-->
         <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColor">@color/text_primary</item>
         <item name="android:windowBackground">@color/primary_background</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-<!--    <style name="Toolbar" parent="Widget.AppCompat.Light.ActionBar">-->
-<!--        <item name="colorControlNormal">@color/title_primary</item>-->
-<!--        <item name="android:textColorPrimary">@color/title_primary</item>-->
-<!--        <item name="android:textColor">@color/text_primary</item>-->
-<!--    </style>-->
-
     <style name="AppTheme.BannerTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">@dimen/banner_title_padding</item>
-        <item name="android:background">@color/primary</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingTop">@dimen/banner_title_padding</item>
+        <item name="android:paddingBottom">@dimen/banner_title_padding</item>
         <item name="android:textColor">@color/title_primary</item>
         <item name="android:layout_marginBottom">@dimen/banner_title_margin</item>
+        <item name="android:layout_marginTop">@dimen/banner_title_margin_top</item>
         <item name="android:textSize">@dimen/banner_title_size</item>
+        <item name="android:background">@drawable/rounded_corner</item>
     </style>
 
     <style name="AppTheme.TextView">
