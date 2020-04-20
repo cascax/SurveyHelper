@@ -76,7 +76,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 message.setText(s);
                 message.setMovementMethod(LinkMovementMethod.getInstance());
                 message.setTextSize(16);
-                message.setPadding(56, 40, 0, 56);
+                message.setPadding(56, 40, 56, 0);
                 message.setTextColor(getResources().getColor(R.color.text_primary));
 
                 new AlertDialog.Builder(getActivity())
